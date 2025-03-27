@@ -5,7 +5,22 @@ void second (void);
 int main (void){
 	int password ;
 	char word;
-	
+		printf("==============================\n") ;
+		printf("::                          ==\n") ;
+		printf("==                          ==\n") ;
+		printf("==           你好           ::\n");
+		printf("==                          ==\n") ;
+		printf("::                          ==\n") ;
+		printf("==============================\n") ;
+		printf("::                          ==\n") ;
+		printf("==                          ==\n") ;
+		printf("==        按任意按鍵        ::\n");
+		printf("==                          ==\n") ;
+		printf("::                          ==\n") ;
+		printf("==============================\n") ;
+		getche();
+		system("cls");
+
 		printf("請輸入密碼\n");
 		scanf("%d",&password);
 		
