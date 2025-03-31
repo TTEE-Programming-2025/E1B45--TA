@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<conio.h>
+
 void second (void); 
 int main (void){
 	int password ;
