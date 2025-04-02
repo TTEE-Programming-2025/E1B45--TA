@@ -3,6 +3,7 @@
 #include<conio.h>
 
 void second (void); 
+
 int main (void){
 	int password ;  /*定義整數*/ 
 	char word;		/*定義字元*/ 
