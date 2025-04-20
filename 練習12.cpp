@@ -12,7 +12,7 @@
  num ++;
  ch = getch();
  } while (ch != 27); // ASCII 值 27 表示 Esc 鍵
- printf("\n 共輸入%d 個字元.\n", num);
+ printf("\n 共輸入%d 個字元.\n",  num);
  system("pause");
  return 0;
  } 
