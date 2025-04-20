@@ -4,7 +4,7 @@
  int main (void)
  {
  char ch;
- int num =-1; //共輸入幾   個字元
+ int num =-1; //  共輸入幾   個字元
 
  printf("連續輸入字元(直到按   Esc 鍵為止):");
  do
