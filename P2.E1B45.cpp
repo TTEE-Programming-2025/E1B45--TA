@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<conio.h>
 
 int password (int n){
 	int x=0;
@@ -15,13 +16,26 @@ int password (int n){
 	
 	return n;
 }
+void Main_Menu(void){
+		printf("=================================\n") ;
+		printf("==                             ==\n");
+		printf("==        a.畫出直角三角形     ==\n");
+		printf("==        b.顯示乘法表         ==\n");
+		printf("==        c.結束               ==\n");
+		printf("==                             ==\n");
+		printf("=================================\n") ;
+} 
+
 int main (void){
 	int n;
 	password(n);
-	getche ();
+	fflush(stdin);
+	getchar ();
 	system("CLS");
-	
-	
+	Main_Menu();
+	getchar ();
+	system("CLS");
+
 	return 0;
 }
 
