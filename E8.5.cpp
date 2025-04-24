@@ -8,7 +8,7 @@ int main (){
 	scanf("%d",&n);
 	while (n<=0){
 		printf("­«¿é");
-		scanf("%d",&n);
+		scanf("%d",&n);       
 	}
 	printf("my_fun(%d)¬O %f\n",n,my_fun(n));
 	printf("my_fun(8)¬O %f\n",my_fun(n));
