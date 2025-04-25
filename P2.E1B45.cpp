@@ -41,18 +41,24 @@ int Multiplication_table (int n){
 		printf("\n");}
 	return n;}
 char Right_triangle(){
+	int i=1,j=1,k=1,n,lines;
 	char word;
 	printf("請輸入a 至 n 的 字元 :");
 	scanf("%c",&word);
-	while(n<'a'||n>'n'){
+	n=word;
+	while(word<'a'||word>'n'){
 	printf("錯誤，重輸 :");
-	scanf("%c",&word);	}
-	for  (i=1;i<=n;i++){
-		for  (s=1;s<=n;s++){
-			for  (w=1;w<=n;w++){ 
-			
-			printf("%d*%d=%d ",i,w,i*w);	}
-		printf("\n");}
+	scanf("%c",&word);  	}
+	n=word;
+	for  (i=n-'a';i>=0;i--){
+		for  (j='a'+i;j>='a'+1;j--){
+			printf(" ");
+		} 
+		for  (k='a'+i;k<=n;k++){ 
+		
+			printf("%c",k);
+		}
+		printf("\n");} 
 }
 	
 int main (void){
@@ -64,7 +70,7 @@ int main (void){
 	Main_Menu();
 	getchar ();
 	system("CLS");
-	Multiplication_table(n);
+	Right_triangle();
 
 	return 0;
 }
