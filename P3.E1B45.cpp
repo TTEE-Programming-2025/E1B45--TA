@@ -5,12 +5,19 @@
 void command_a (){
 	int i=0,j=0,k=0;
 	char momo[9][9]	;
-		printf("\n\\123456789");
+	srand( time(NULL) );
+		printf("\\123456789");
 
 	for (i=0;i<9;i++){ 
 		for(j=0;j<9;j++){ 
 			momo[i][j]='-';} 
 }
+	for (i=0;i<10;i++){
+	 int a= rand() % 9,b= rand() % 9;
+			momo[a][b]='*';
+			
+}
+
 	for (i=0;i<9;i++){
 		printf("\n%d",9-i);
 		/////¦L¥X -
@@ -18,8 +25,6 @@ void command_a (){
 			printf("%c",momo[i][j]);} 
 }	
 
-
-		
 	return ;	
 	}
 	
