@@ -1,10 +1,33 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<conio.h>
+#include <time.h>
+void command_a (){
+	int i=0,j=0,k=0;
+	char momo[9][9]	;
+		printf("\n\\123456789");
+
+	for (i=0;i<9;i++){ 
+		for(j=0;j<9;j++){ 
+			momo[i][j]='-';} 
+}
+	for (i=0;i<9;i++){
+		printf("\n%d",9-i);
+		/////印出 -
+		for(j=0;j<9;j++){ 
+			printf("%c",momo[i][j]);} 
+}	
+
+
+		
+	return ;	
+	}
+	
+
 int main (void){
 	int n,x;
 	char c;
-		//個性介面 
+		////////////          個性介面 
  		printf("==============================\n") ;
  		printf("==        		    ::\n");
  		printf("==         (  歡迎  )       ::\n");
@@ -42,8 +65,18 @@ int main (void){
 	fflush(stdin);
 	getchar ();
 	system("CLS");
+	//////////////////////        主選單 
+	printf("---------[Booking System]----------\n" ) ;
+	printf("| a. Available seats               |\n") ;
+	printf("| b. Arrange for you               |\n") ;
+	printf("| c. Choose by yourself            |\n") ;
+	printf("| d. Exit                          |\n") ;
+	printf("------------------------------------\n") ;
 	
-	
+	char choose=getchar();
+	if (choose=='a'||choose=='A'){
+		command_a ();
+	}
 	
 	
 	
