@@ -34,8 +34,46 @@ char change (char momo[9][9]){
 		}	
 	return momo[9][9];	
 }
+void choose_momo(char momo[9][9]) {
+    char temp[10];
+    int row, col;
 
-		
+    while (1) {
+        printf("請輸入座位 (格式：列-行，例如 3-7)，輸入 0 結束：");
+        fgets(temp, sizeof(temp), stdin);
+
+        if (temp[0] == '0') break;
+
+        if (sscanf(temp, "%d-%d", &row, &col) != 2 || row < 1 || row > 9 || col < 1 || col > 9) {
+            printf("格式錯誤，請重新輸入。\n");
+            continue;
+        }
+
+        if (momo[9 - row][col - 1] == '*' || momo[9 - row][col - 1] == '@') {
+            printf("該座位已被選取，請重新輸入。\n");
+            continue;
+        }
+
+        momo[9 - row][col - 1] = '@';
+    }
+
+	exhibit(momo); // 顯示包含@的座位圖
+
+    printf("若無誤，請按任意鍵確認...");
+    getch(); // Windows 下，getch 不需按 Enter
+
+    // 將 @ 轉換為 *
+    for (int i = 0; i < 9; i++) {
+        for (int j = 0; j < 9; j++) {
+            if (momo[i][j] == '@') {
+                momo[i][j] = '*';
+            }
+        }
+    }
+
+    system("cls"); // 清除螢幕，回主選單
+}
+
 
 int main (void){
 	int i,j,k,a,n,x;
@@ -130,7 +168,7 @@ int main (void){
 			
 			while(1){ 
 				i=rand()%9,j=rand()%8;
-				while (momo[i][j]=='-'&&momo[i][j+1]=='-'){
+				if (momo[i][j]=='-'&&momo[i][j+1]=='-'){
 					momo[i][j]='@';
 					momo[i][j+1]='@';
 					break;
@@ -145,16 +183,65 @@ int main (void){
 			if (a=='n')
 				cancel(momo); 
 			}
+		if (k==3){
 			
+			while(1){ 
+				i=rand()%9,j=rand()%8;
+				if (momo[i][j]=='-'&&momo[i][j+1]=='-'&&momo[i][j+2]=='-'){
+					momo[i][j]='@';
+					momo[i][j+1]='@';
+					momo[i][j+2]='@';
+					break;
+				}
+			} 
+			exhibit(momo);
+			printf("Are you satisfied? ( y/n ) :");
+			fflush(stdin);
+			scanf("%c",&a);
+			if (a=='y')
+				change(momo);	
+			if (a=='n')
+				cancel(momo); 
+			}
+	int found;
+		if (k==4){
 			
+			while(1){ 
+				i=rand()%9,j=rand()%8;
+				if (momo[i][j]=='-'&&momo[i][j+1]=='-'&&momo[i][j+2]=='-'&&momo[i][j+3]=='-'){
+					momo[i][j]='@';
+					momo[i][j+1]='@';
+					momo[i][j+2]='@';
+					momo[i][j+3]='@';
+					found=1;
+					break;
+				}
+				if (momo[i][j]=='-'&&momo[i][j+1]=='-'&&momo[i+1][j]=='-'&&momo[i+1][j+1]=='-'){
+					momo[i][j]='@';
+					momo[i][j+1]='@';
+					momo[i+1][j]='@';
+					momo[i+1][j+1]='@';
+					found=1;
+					break;
+				}
+			} 
+			exhibit(momo);
+			printf("Are you satisfied? ( y/n ) :");
+			fflush(stdin);
+			scanf("%c",&a);
+			if (a=='y')
+				change(momo);	
+			if (a=='n')
+				cancel(momo); 
+			}	
+		
 			
-			
-			
-			
-			
-			
-				
 		}	
+		if (choose=='c'||choose=='C'){
+			printf("請逐一輸入座位( 例: 1-2,2-9 )");
+			choose_momo(momo);
+			
+	}
 	 
 }while(1); 
 	
