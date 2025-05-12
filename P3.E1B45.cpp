@@ -2,6 +2,7 @@
 #include<stdlib.h>
 #include<conio.h>
 #include <time.h>
+//    Display seating chart
 void exhibit (char momo[9][9]){
 	int i,j;
 	printf("\\123456789");
@@ -12,6 +13,7 @@ void exhibit (char momo[9][9]){
 			}
 		}
 	}
+//   Change '@' back to '-'
 void cancel (char momo[9][9]){
 	int i=0,j=0,k=0;
 		for (i=0;i<9;i++){ 
@@ -23,6 +25,7 @@ void cancel (char momo[9][9]){
 		}	
 	return ;	
 }
+//    Confirm the position and change '@' to '*'
 char change (char momo[9][9]){
 	int i=0,j=0,k=0;
 		for (i=0;i<9;i++){ 
@@ -34,35 +37,36 @@ char change (char momo[9][9]){
 		}	
 	return momo[9][9];	
 }
+//     Choose your own seats
 void choose_momo(char momo[9][9]) {
     char temp[10];
     int row, col;
 	
     while (1) {
     	printf("請逐一輸入座位( 例: 1-2,2-9 )");
-        fgets(temp, sizeof(temp), stdin); // 讀取一整行的字串
+        fgets(temp, sizeof(temp), stdin); // Read a whole line of string
 
-        if (temp[0] == '0') break;// 輸入0結束 
-
+        if (temp[0] == '0') break;// Enter 0 to end
+		// 	Determine whether the input format and the input number are within the range
         if (sscanf(temp, "%d-%d", &row, &col) != 2 || row < 1 || row > 9 || col < 1 || col > 9) {
             printf("格式錯誤，請重新輸入。\n");
             continue;
         }
-
+		//Determine if the seat is occupied
         if (momo[9 - row][col - 1] == '*' || momo[9 - row][col - 1] == '@') {
-            printf("該座位已被選取，請重新輸入。\n");
+            printf("The seat has been selected, please re-enter\n");
             continue;
         }
-
+		 
         momo[9 - row][col - 1] = '@';
     }
 
-	exhibit(momo); // 顯示包含@的座位圖
+	exhibit(momo); // Show seat map containing @
 
-    printf("若無誤，請按任意鍵確認...");
-    getch(); // getch 不用按 Enter
+    printf("If there are no errors, press any key to confirm....");
+    getch(); 
 
-    // 將 @ 轉換為 *
+    // Convert @ to *
     for (int i = 0; i < 9; i++) {
         for (int j = 0; j < 9; j++) {
             if (momo[i][j] == '@') {
@@ -71,55 +75,55 @@ void choose_momo(char momo[9][9]) {
         }
     }
 
-    system("cls"); // 清除螢幕，回主選單
+    system("cls"); // Clear the screen and return to the main menu
 }
 
-
+//Main function
 int main (void){
 	int i,j,k,a,n,x;
 	char c;
 	char momo[9][9]={'-'};
 	srand( time(NULL) );
-		////////////          個性介面 
- 		printf("==============================\n") ;
- 		printf("==        		    ::\n");
- 		printf("==         (  歡迎  )       ::\n");
- 		printf("==        		    ::\n");
- 		printf("::  邱邱邱   邱   邱邱邱    ==\n") ;
- 		printf("==  邱       邱   邱   邱   ==\n") ;
- 		printf("==  邱邱邱   邱   邱  邱    ==\n") ;
- 		printf("==  邱       邱   邱   邱   ::\n");
- 		printf("==  邱邱邱   邱   邱邱邱    ==\n") ;
- 		printf("==                          ==\n") ;
- 		printf("::                          ==\n") ;
- 		printf("==============================\n") ;
- 		printf("==                          ==\n") ;
- 		printf("::    邱 邱      邱邱邱邱   ==\n") ;
- 		printf("==   邱  邱      邱         ==\n") ;
- 		printf("==  邱邱邱邱邱    邱邱邱    ::\n");
- 		printf("==       邱            邱   ==\n") ;
- 		printf("::       邱      邱邱邱邱   ==\n") ;
- 		printf("==                          ::\n") ;
- 		printf("==      [ 按任意按鍵 ]      ==\n") ;
- 		printf("::                          ==\n") ;
- 		printf("==============================\n") ;
+		////////////         Personalized interface
+   printf("==============================\n");
+    printf("==                          ==\n");
+    printf("==       Welcome!           ==\n");
+    printf("==                          ==\n");
+    printf("::  QIU QIU QIU QIU QIU     ==\n");
+    printf("==  QIU     QIU   QIU       ==\n");
+    printf("==  QIU QIU QIU   QIU QIU   ==\n");
+    printf("==  QIU     QIU   QIU       ==\n");
+    printf("==  QIU QIU QIU   QIU QIU   ==\n");
+    printf("==                          ==\n");
+    printf("::                          ==\n");
+    printf("==============================\n");
+    printf("==                          ==\n");
+    printf("::   QIU QIU   QIU QIU QIU  ==\n");
+    printf("==   QIU QIU       QIU      ==\n");
+    printf("==   QIU QIU QIU   QIU QIU  ==\n");
+    printf("==      QIU          QIU    ==\n");
+    printf("::      QIU     QIU QIU QIU ==\n");
+    printf("==                          ==\n");
+    printf("==     [ Press any key ]    ==\n");
+    printf("::                          ==\n");
+    printf("==============================\n");
 
- 	//判斷密碼是否正確 
+ 	//Determine whether the password is correct
 	do{
-	printf("輸入一個密碼 :");
+	printf("Enter a password :");
 	scanf("%d",&n);
 	
-	if(n!=2025){ printf("錯誤，請"); x++;} 
+	if(n!=2025){ printf("Error, please"); x++;} 
 	if (x==3){
-		printf("錯誤3次");
+		printf("Error 3 times");
 		return 0;}
 		} while(n!=2025);
 	printf(" \n ");
-	printf("       歡迎       ");
+	printf("       Welcome       ");
 	fflush(stdin);
 	getchar ();
 	system("CLS");
-	/////////預設座位表
+	/////////Preset seating chart
 	printf("\\123456789");
 	for (i=0;i<9;i++){ 
 		for(j=0;j<9;j++){ 
@@ -132,7 +136,7 @@ int main (void){
 			momo[a][b]='*';	
 } 
 	
-	//////////////////////        主選單 
+	//     Main Menu
 	do{ 
 	system("CLS");
 	printf("---------[Booking System]----------\n" ) ;
@@ -141,17 +145,18 @@ int main (void){
 	printf("| c. Choose by yourself            |\n") ;
 	printf("| d. Exit                          |\n") ;
 	printf("------------------------------------\n") ;
-	
+	// choose a,b,c,d 
 	char choose=getch();
 	if (choose=='a'||choose=='A'){
-			exhibit(momo);
+			exhibit(momo);// Display seating chart
 			getche();	
 	}
 	else if (choose=='b'||choose=='B'){
-		printf("請問需要幾個座位(1~4): ");	
+		printf("How many seats do you need?(1~4): ");	
 		scanf("%d",&k);
+		//  random a seat
 		if(k==1){
-			i=rand()%9,j=rand()%9;
+			i=rand()%9,j=rand()%9; 
 				while (momo[i][j]=='-'){
 					momo[i][j]='@';
 				}
@@ -160,10 +165,11 @@ int main (void){
 			fflush(stdin);
 			scanf("%c",&a);
 			if (a=='y')
-				change(momo);	
+				change(momo);	//change @ to *
 			if (a=='n')
-				cancel(momo); 
+				cancel(momo); 	//change @ to -
 			}
+		//  random Two seats connected
 		if (k==2){
 			
 			while(1){ 
@@ -179,10 +185,11 @@ int main (void){
 			fflush(stdin);
 			scanf("%c",&a);
 			if (a=='y')
-				change(momo);	
+				change(momo);			//change @ to *
 			if (a=='n')
-				cancel(momo); 
+				cancel(momo); 		//change @ to -
 			}
+		 //  randomThree seats connected
 		if (k==3){
 			
 			while(1){ 
@@ -199,11 +206,12 @@ int main (void){
 			fflush(stdin);
 			scanf("%c",&a);
 			if (a=='y')
-				change(momo);	
+				change(momo);			//change @ to *
 			if (a=='n')
-				cancel(momo); 
+				cancel(momo); 	   	//change @ to -
 			}
 	int found;
+		//  random Four seats connected
 		if (k==4){
 			
 			while(1){ 
@@ -226,19 +234,20 @@ int main (void){
 				}
 			} 
 			exhibit(momo);
+			// Ask if you are satisfied   
 			printf("Are you satisfied? ( y/n ) :");
 			fflush(stdin);
 			scanf("%c",&a);
 			if (a=='y')
-				change(momo);	
+				change(momo);	//change @ to *
 			if (a=='n')
-				cancel(momo); 
+				cancel(momo); 	//change @ to *
 			}	
 		
 			
 		}	
 		if (choose=='c'||choose=='C'){
-			choose_momo(momo);	
+			choose_momo(momo);	//Enter your own seat
 		}
 	int g;
 		if (choose=='d'||choose=='D'){
@@ -247,20 +256,15 @@ int main (void){
 				g=getch();
 				if (g=='y')break;
 				if(g=='n')return 0;
-				printf("輸入錯誤 ，請重輸:");
+				printf("Input error, please re-enter:");
 			}while(1);
 		}
-	 
-}while(1); 
-	
-	
-	
-	
-	
-	
+	 }while(1); 	
 	return 0;	
 } 
-	
+/*透過這次的座位預約系統製作，我熟悉了 C 語言中關於二維陣列、條件判斷、迴圈、函式設計等基礎應用。
+過程中我學會如何用符號代表座位狀態，並處理使用者輸入格式與錯誤判斷，也透過 rand() 隨機設定座位。
+雖然過程中遇到一些錯誤與邏輯問題，但也因此加深了我對程式結構與除錯技巧的掌握，收穫很多。*/ 	
 
 
 
