@@ -37,12 +37,12 @@ char change (char momo[9][9]){
 void choose_momo(char momo[9][9]) {
     char temp[10];
     int row, col;
-
+	
     while (1) {
-        printf("請輸入座位 (格式：列-行，例如 3-7)，輸入 0 結束：");
-        fgets(temp, sizeof(temp), stdin);
+    	printf("請逐一輸入座位( 例: 1-2,2-9 )");
+        fgets(temp, sizeof(temp), stdin); // 讀取一整行的字串
 
-        if (temp[0] == '0') break;
+        if (temp[0] == '0') break;// 輸入0結束 
 
         if (sscanf(temp, "%d-%d", &row, &col) != 2 || row < 1 || row > 9 || col < 1 || col > 9) {
             printf("格式錯誤，請重新輸入。\n");
@@ -60,7 +60,7 @@ void choose_momo(char momo[9][9]) {
 	exhibit(momo); // 顯示包含@的座位圖
 
     printf("若無誤，請按任意鍵確認...");
-    getch(); // Windows 下，getch 不需按 Enter
+    getch(); // getch 不用按 Enter
 
     // 將 @ 轉換為 *
     for (int i = 0; i < 9; i++) {
@@ -238,10 +238,18 @@ int main (void){
 			
 		}	
 		if (choose=='c'||choose=='C'){
-			printf("請逐一輸入座位( 例: 1-2,2-9 )");
-			choose_momo(momo);
-			
-	}
+			choose_momo(momo);	
+		}
+	int g;
+		if (choose=='d'||choose=='D'){
+			printf("Continue? (y/n)");
+			do{
+				g=getch();
+				if (g=='y')break;
+				if(g=='n')return 0;
+				printf("輸入錯誤 ，請重輸:");
+			}while(1);
+		}
 	 
 }while(1); 
 	
