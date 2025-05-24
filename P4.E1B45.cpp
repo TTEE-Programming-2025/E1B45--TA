@@ -3,16 +3,67 @@
 #include<conio.h>
 #include <time.h>
 #include<string.h>
+
+
 struct data{
 	char name[7];
 	int ID;
 	int math;
 	int physics;
 	int english;	
-};
-typedef struct data Qiu[10];
+};	struct data Qiu[10];
+void case_a (){
+	int num;
+		system("CLS");
+		do{
+		printf("輸入（5~10）的整數 :");
+		scanf("%d",&num);
+		if(num<1||num>2)
+			printf("輸入錯誤，重輸 :");
+	}while(num<1||num>2);
+	for(int i=0;i<num;i++){ 
+		system("CLS");
+		printf("輸入第%d個學生姓名  : ",i+1);
+		scanf("%s",	Qiu[i].name);
+		do{
+			system("CLS");
+			printf("輸入第%d個（學生ID ) : ",i+1);
+			scanf("%d",	&Qiu[i].ID);
+			if(Qiu[i].ID<100000||Qiu[i].ID>999999)
+				printf("錯誤");
+		}while(Qiu[i].ID<100000||Qiu[i].ID>999999);
+		do{
+			system("CLS");
+			printf("輸入第%d個學生(math成績) : ",i+1);
+			scanf("%d",	&Qiu[i].math);
+			if(Qiu[i].math<0||Qiu[i].math>100)
+				printf("錯誤");
+		}while(Qiu[i].ID<0||Qiu[i].math>100);
+		do{
+			system("CLS");
+			printf("輸入第%d個學生(math成績) : ",i+1);
+			scanf("%d",	&Qiu[i].physics);
+			if(Qiu[i].physics<0||Qiu[i].physics>100)
+				printf("錯誤");
+		}while(Qiu[i].physics<0||Qiu[i].physics>100);
+		do{
+			system("CLS");
+			printf("輸入第%d個學生(physics成績) : ",i+1);
+			scanf("%d",	&Qiu[i].physics);
+			if(Qiu[i].physics<0||Qiu[i].physics>100)
+				printf("錯誤");
+		}while(Qiu[i].physics<0||Qiu[i].physics>100);
+		do{
+			system("CLS");
+			printf("輸入第%d個學生(english成績) : ",i+1);
+			scanf("%d",	&Qiu[i].english);
+			if(Qiu[i].english<0||Qiu[i].english>100)
+				printf("錯誤");
+		}while(Qiu[i].english<0||Qiu[i].english>100);
+	} 
+} 
 int main (){
-	Qiu Data;  
+    struct data Qiu[10];
 	int password,k=0,c,num,i;
 	printf("==============================\n");
     printf("==                          ==\n");
@@ -49,28 +100,21 @@ int main (){
 	//////////////		Main Menu 
 	do{ 
 	system("CLS");
-	printf("------------[Grade System]------------"); 
-	printf("|  a. Enter student grades    		 |");
-	printf("|  b. Display student grades   		 |");
-	printf("|  c. Search for student grades  	 |");
-	printf("|   d. Grade ranking      			 |");
-	printf("|  e. Exit system           		 |");
-	printf("|     								 |");
+	printf("------------[Grade System]------------\n"); 
+	printf("|  a. Enter student grades    		|\n");
+	printf("|  b. Display student grades   		 |\n");
+	printf("|  c. Search for student grades  	 |\n");
+	printf("|   d. Grade ranking      			 |\n");
+	printf("|  e. Exit system           		 |\n");
+	printf("|     								|\n");
 	printf("--------------------------------------\n"); 
 		c=getch();
 		if(c=='a'||c=='A'){
-			system("CLS");
-			printf("輸入（5~10）的整數 :");
-			scanf("%d",&num);
-			for(i=0;i<num;i++){
-				printf("學生姓名、學號（6位整數）、數學、物理、英文的成績（0~100分）\n   ");
-				scanf("%s %d %d %d %d",Qiu[i].name,Qiu[i].ID,Qiu[i].math,Qiu[i].physics,Qiu[i].english);
-					if(Qiu[i].ID!=<100000 || Qiu[i].ID>10000000 || Qiu[i].math<0 || Qiu[i].math>100 || Qiu[i].physics<0 || Qiu[i].physics>100 ||Qiu[i].english<0 || Qiu[i].english>100 |){
-						printf("發現錯誤訊息並要求改正");
-					}
-			}
-		
+			case_a();
 		}
+		
+	
+	}while(1);
 	return 0;
 }
 
