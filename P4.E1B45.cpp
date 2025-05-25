@@ -71,24 +71,42 @@ void case_b (){
 	system("CLS");
 	aver();
 	for(int i=0;i<num;i++){
-		printf("第%d個 姓名:%s 學號:%d math:%d phy:%d Engl:%d avg:%.1f\n",i+1,Qiu[i].name,Qiu[i].ID,Qiu[i].math,Qiu[i].physics,Qiu[i].english,average[i]);
+		printf("第%d個 姓名:%s 學號:%d math:%d phy:%d Engl:%d avg:%.1f\n",i+1,Qiu[i].name,Qiu[i].ID,Qiu[i].math,
+		Qiu[i].physics,Qiu[i].english,average[i]);
 	}
 	system("pause");
 }
 void case_c (){
-	int m;
+	int m,j=0;
 	system("CLS");
 	printf("請輸入要檢索的姓名 :");
 	scanf("%s",&search);
 	for(int i=0;i<num;i++){ 
 	if(strcmp(search,Qiu[i].name)==0) {
-		m=i;
-		printf("第%d個 姓名:%s 學號:%d math:%d phy:%d Engl:%d avg:%.1f\n",m+1,Qiu[m].name,Qiu[m].ID,Qiu[m].math,Qiu[m].physics,Qiu[m].english,average[m]);
+		m=i;j=1;
+		printf("第%d個 姓名:%s 學號:%d math:%d phy:%d Engl:%d avg:%.1f\n",m+1,Qiu[m].name,Qiu[m].ID,Qiu[m].math,
+		Qiu[m].physics,Qiu[m].english,average[m]);
 	}
-	else{
+	if(j==1){
 		printf("資料不存在");
 	}
 }
+	system("pause");
+}
+void case_d (){
+	float max=average[0],temp;
+	system("CLS");
+	for(int i=0;i<num;i++){ 
+		if(max<average[i]){ 
+			temp=average[i];
+			average[i]=max;
+			max=temp;
+	} 
+}
+	for(int i=0;i<num;i++){ 
+		printf("第%d個 姓名:%s 學號:%d math:%d phy:%d Engl:%d avg:%.1f\n",i+1,Qiu[i].name,Qiu[i].ID,Qiu[i].math,
+		Qiu[i].physics,Qiu[i].english,average[i]);
+	} 
 	system("pause");
 }
 int main (){
@@ -146,6 +164,9 @@ int main (){
 		}
 		if(c=='c'||c=='C'){
 			case_c();
+		}
+		if(c=='d'||c=='D'){
+			case_d();
 		}
 	}while(1);
 	return 0;
