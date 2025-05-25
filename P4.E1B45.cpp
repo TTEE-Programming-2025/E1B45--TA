@@ -14,8 +14,9 @@ struct data{
 };	struct data Qiu[10];
 	char search[]={0};
 	int num=0;
-	float sum[]={0} ,average[]={0};
+	float sum[10]={0} ,average[10]={0};
 void aver(){
+
 	for(int i=0;i<num;i++){
 		sum[i]=Qiu[i].math+Qiu[i].english+Qiu[i].physics;
 		average[i]=sum[i]/3;
@@ -39,12 +40,13 @@ void case_a (){
 			printf("輸入第%d個（學生ID ) : ",i+1);
 			scanf("%d",	&Qiu[i].ID);
 			if(Qiu[i].ID<100000||Qiu[i].ID>999999)
-				printf("錯誤");
+				printf("錯誤，要六位數，請");
 		}while(Qiu[i].ID<100000||Qiu[i].ID>999999);
 		///// Math
 		do{
 			system("CLS");
 			printf("輸入第%d個學生(math成績) : ",i+1);
+			printf("\n範圍( 1~100 )");
 			scanf("%d",	&Qiu[i].math);
 			if(Qiu[i].math<0||Qiu[i].math>100)
 				printf("錯誤");
@@ -53,6 +55,7 @@ void case_a (){
 		do{
 			system("CLS");
 			printf("輸入第%d個學生(physics成績) : ",i+1);
+			printf("\n範圍( 1~100 )");
 			scanf("%d",	&Qiu[i].physics);
 			if(Qiu[i].physics<0||Qiu[i].physics>100)
 				printf("錯誤");
@@ -61,6 +64,7 @@ void case_a (){
 		do{
 			system("CLS");
 			printf("輸入第%d個學生(english成績) : ",i+1);
+			printf("\n範圍( 1~100 )");
 			scanf("%d",	&Qiu[i].english);
 			if(Qiu[i].english<0||Qiu[i].english>100)
 				printf("錯誤");
@@ -81,28 +85,41 @@ void case_c (){
 	system("CLS");
 	printf("請輸入要檢索的姓名 :");
 	scanf("%s",&search);
+	aver();
 	for(int i=0;i<num;i++){ 
 	if(strcmp(search,Qiu[i].name)==0) {
 		m=i;j=1;
 		printf("第%d個 姓名:%s 學號:%d math:%d phy:%d Engl:%d avg:%.1f\n",m+1,Qiu[m].name,Qiu[m].ID,Qiu[m].math,
 		Qiu[m].physics,Qiu[m].english,average[m]);
+		}
 	}
-	if(j==1){
-		printf("資料不存在");
+	if(j==0){
+		printf("\n資料不存在");
 	}
-}
+
 	system("pause");
 }
 void case_d (){
-	float max=average[0],temp;
+	float max;
+	struct data temp; 
 	system("CLS");
-	for(int i=0;i<num;i++){ 
-		if(max<average[i]){ 
-			temp=average[i];
-			average[i]=max;
-			max=temp;
-	} 
+	aver();
+	for(int j=0;j<num-1;j++){ 
+		for(int i=0;i<num-1;i++){ 
+			if(average[i]<average[i+1]){ 
+				max=average[i];
+				average[i]=average[i+1];
+				average[i+1]=max;
+				
+				temp = Qiu[i];
+				Qiu[i] = Qiu[i+1];
+				Qiu[i+1] = temp;
+
+				
+		} 
+	}
 }
+ 
 	for(int i=0;i<num;i++){ 
 		printf("第%d個 姓名:%s 學號:%d math:%d phy:%d Engl:%d avg:%.1f\n",i+1,Qiu[i].name,Qiu[i].ID,Qiu[i].math,
 		Qiu[i].physics,Qiu[i].english,average[i]);
@@ -110,8 +127,7 @@ void case_d (){
 	system("pause");
 }
 int main (){
-    struct data Qiu[10];
-	int password,k=0,c,num,i;
+	int password,k=0,c,i;
 	printf("==============================\n");
     printf("==                          ==\n");
     printf("==       Welcome!           ==\n");
