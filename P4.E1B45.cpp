@@ -27,9 +27,9 @@ void case_a (){
 		do{
 		printf("輸入（5~10）的整數 :");
 		scanf("%d",&num);
-		if(num<1||num>2)
+		if(num<5||num>10)
 			printf("輸入錯誤，重輸 :");
-	}while(num<1||num>2);
+	}while(num<5||num>10);
 	for(int i=0;i<num;i++){ 
 		system("CLS");
 		printf("輸入第%d個學生姓名  : ",i+1);
@@ -94,7 +94,7 @@ void case_c (){
 		}
 	}
 	if(j==0){
-		printf("\n資料不存在");
+		printf("\n資料不存在\n");
 	}
 
 	system("pause");
@@ -153,12 +153,12 @@ int main (){
     	do{
     		printf("請輸入密碼 (四個數字) :");
     		scanf("%d",&password);
-    		if(password!=2){
+    		if(password!=2025){
     			printf("錯誤，");
     			k++;
 			}
 			if(k==3)return 0;		
-		}while(password!=2);
+		}while(password!=2025);
 	printf("\n     歡迎");
 	//////////////		Main Menu 
 	do{ 
@@ -183,6 +183,16 @@ int main (){
 		}
 		if(c=='d'||c=='D'){
 			case_d();
+		}
+	char g;
+		if(c=='e'||c=='E'){
+			printf("繼續嗎? (y/n)");
+			do{
+				g=getch();
+				if (g=='y')break;
+				if(g=='n')return 0;
+				printf("輸入錯誤，請重輸:");
+			}while(1);
 		}
 	}while(1);
 	return 0;
